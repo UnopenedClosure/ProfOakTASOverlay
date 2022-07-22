@@ -1,8 +1,6 @@
 --[[
 Note: the numberings are based on the Pokemon's number within the game's code, not their Pokedex number
 
---TODO check the rest of the numbers. the pre-badge 6 section was all messed up
-
 Pending routing questions:
 -are we taking Lileep or Cradily in PB4?
 --]]
