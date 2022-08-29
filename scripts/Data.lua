@@ -330,7 +330,7 @@ TableData = {
 	}
 }--]]
 
-ItemData = {--TODO upper case
+ItemData = {
 "---", "MASTER BALL", "ULTRA BALL", "GREAT BALL", "POKé BALL", "SAFARI BALL", "NET BALL", "DIVE BALL",							-- 0X000-0X007
 "NEST BALL", "REPEAT BALL", "TIMER BALL", "LUXURY BALL", "PREMIER BALL", "POTION", "ANTIDOTE", "BURN HEAL",						-- 0X008-0X00F
 "ICE HEAL", "AWAKENING", "PARLYZ HEAL", "FULL RESTORE", "MAX POTION", "HYPER POTION", "SUPER POTION", "FULL HEAL",				-- 0X010-0X017
@@ -380,7 +380,7 @@ ItemData = {--TODO upper case
 "TEA", "MYSTICTICKET", "AURORATICKET", "POWDER JAR", "RUBY", "SAPPHIRE", "MAGMA EMBLEM", "OLD SEA MAP"							-- 0X170-0X177
 }
 
-NatDexLookup = {
+NatDexLookup = {--TODO finish filling this out for the remaining Hoenn Pokes
 	[283]=258,
 	[284]=259,
 	[285]=260,
