@@ -82,16 +82,16 @@ function drawRoundedCorners(x1, y1, x2, y2, color)
 	gui.drawPixel(x2, y2 - 1, color)
 end
 
-function drawParty()
-	gui.drawRectangle(0,160, partyPanelSize, DOWN_PAD - 1, Color.PARTY_OUTER_BORDER, Color.PARTY_OUTER_BORDER)
+function drawParty() 
+	gui.drawRectangle(0, screenHeight, partyPanelSize, DOWN_PAD - 1, Color.PARTY_OUTER_BORDER, Color.PARTY_OUTER_BORDER)
 	
-	gui.drawLine(0, 164, partyPanelSize, 164, Color.PARTY_MIDDLE_BORDER)
-	gui.drawLine(0, 160 + DOWN_PAD - 5, partyPanelSize, 160 + DOWN_PAD - 5, Color.PARTY_MIDDLE_BORDER)
+	gui.drawLine(0, screenHeight + 4, partyPanelSize, screenHeight + 4, Color.PARTY_MIDDLE_BORDER)
+	gui.drawLine(0, screenHeight + DOWN_PAD - 5, partyPanelSize, screenHeight + DOWN_PAD - 5, Color.PARTY_MIDDLE_BORDER)
 	
-	gui.drawRectangle(0, 165, partyPanelSize, 2, Color.PARTY_INNER_BORDER, Color.PARTY_INNER_BORDER)
+	gui.drawRectangle(0, screenHeight + 5, partyPanelSize, 2, Color.PARTY_INNER_BORDER, Color.PARTY_INNER_BORDER)
 	gui.drawRectangle(0, yMax - 8, partyPanelSize, 2, Color.PARTY_INNER_BORDER, Color.PARTY_INNER_BORDER)
 	
-	for y=168, yMax - 9, 1 do
+	for y=screenHeight + 8, yMax - 9, 1 do
 		if y % 2 == 0 then
 			gui.drawLine(0, y, partyPanelSize, y, Color.PARTY_BACKGROUND_STRIPE_2)
 		else
@@ -100,10 +100,12 @@ function drawParty()
 	end
 	
 	--TODO incorporate these into the for loop
-	startX = {2, 46, 90, 2, 46, 90}
-	startY = {171, 171, 171, 215, 215, 215}
+	--startX = {2, 46, 90, 2, 46, 90}
+	--startY = {171, 171, 171, 215, 215, 215}
 	
-	for i = 1, 6, 1 do		
+	for i = 1, 6, 1 do
+		startX = (44 * ((i - 1) % 3)) + 2
+		startY = 171 + (44 * math.floor(i / 4))
 		gui.drawRectangle(startX[i], startY[i] + 1, pokeImageSize + 9, pokeImageSize + 8, Color.PARTY_SLOT_OUTER_BORDER)
 		gui.drawRectangle(startX[i] + 1, startY[i], pokeImageSize + 7, pokeImageSize + 10, Color.PARTY_SLOT_OUTER_BORDER)
 		gui.drawRectangle(startX[i] + 2, startY[i] + 2, pokeImageSize + 5, pokeImageSize + 6, Color.PARTY_SLOT_BACKGROUND_TOP, Color.PARTY_SLOT_BACKGROUND_TOP)
@@ -112,7 +114,7 @@ function drawParty()
 		gui.drawLine(startX[i] + 2, startY[i] + 2, startX[i] + pokeImageSize + 6, startY[i] + 2, Color.PARTY_SLOT_BACKGROUND_BOTTOM)
 		gui.drawLine(startX[i] + pokeImageSize + 7, startY[i] + 3, startX[i] + pokeImageSize + 7, startY[i] + pokeImageSize + 8, Color.PARTY_SLOT_BACKGROUND_RIGHT_BORDER) 
 			
-		if emu.framecount() >= 9826 then
+		if emu.framecount() >= 9826 then--without this, performance is very bad before there are Pokes in the party
 			local start = pstats + 100 * (i - 1)
 			local personality = Memory.readdword(start)
 			local magicword = bit.bxor(personality, Memory.readdword(start + 4))
