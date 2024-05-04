@@ -99,13 +99,10 @@ function drawParty()
 		end
 	end
 	
-	--TODO incorporate these into the for loop
-	--startX = {2, 46, 90, 2, 46, 90}
-	--startY = {171, 171, 171, 215, 215, 215}
+	startX = {2, 46, 90, 2, 46, 90}
+	startY = {171, 171, 171, 215, 215, 215}
 	
 	for i = 1, 6, 1 do
-		startX = (44 * ((i - 1) % 3)) + 2
-		startY = 171 + (44 * math.floor(i / 4))
 		gui.drawRectangle(startX[i], startY[i] + 1, pokeImageSize + 9, pokeImageSize + 8, Color.PARTY_SLOT_OUTER_BORDER)
 		gui.drawRectangle(startX[i] + 1, startY[i], pokeImageSize + 7, pokeImageSize + 10, Color.PARTY_SLOT_OUTER_BORDER)
 		gui.drawRectangle(startX[i] + 2, startY[i] + 2, pokeImageSize + 5, pokeImageSize + 6, Color.PARTY_SLOT_BACKGROUND_TOP, Color.PARTY_SLOT_BACKGROUND_TOP)
@@ -201,6 +198,7 @@ end
 
 --TODO the x used for the item bag is different from the lower-case x?
 --TODO something weird about how 0 is printed? might be one pixel too far to the left
+--TODO change logic for which 5 items get printed e.g. we don't need to see things like Super Potions
 function drawItemBagContents()
 	local ballIDs = {}
 	local ballQuantities = {}

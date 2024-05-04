@@ -2,7 +2,7 @@
 Note: the numberings are based on the Pokemon's number within the game's code, not their Pokedex number
 
 Pending routing questions:
--are we taking Lileep or Cradily in PB4?
+-are we taking Lileep or Anorith in PB4?
 --]]
 
 sectionData = {
